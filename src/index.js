@@ -1,17 +1,15 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './components/app';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import rootReducer from './reducers/index';
 
-const API_KEY = [ API_KEY ];
-
-class App extends React.Component {
-  render() {
-    return (
-      <h1>Book List App [React, Redux, Webpack]</h1>
-    )
-  }
-}
+const store = createStore(rootReducer);
 
 ReactDOM.render(
-  <App/>,
+  <Provider store={ store }>
+    <App/>
+  </Provider>,
   document.getElementById('app')
 );
